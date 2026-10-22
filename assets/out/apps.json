@@ -1,0 +1,425 @@
+[
+  {
+    "name": "Blender",
+    "icon": "image://icon/blender",
+    "exec": "blender",
+    "desktop": "blender.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Bluetooth Adapters",
+    "icon": "image://icon/blueman-device",
+    "exec": "blueman-adapters",
+    "desktop": "blueman-adapters.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Bluetooth Manager",
+    "icon": "image://icon/blueman",
+    "exec": "blueman-manager",
+    "desktop": "blueman-manager.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "btop++",
+    "icon": "image://icon/btop",
+    "exec": "kitty -e btop",
+    "desktop": "btop.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "CLion 2026.2.3.1",
+    "icon": "image://icon/jetbrains-clion-49708956-f6bf-43d6-96dc-1a035661672a",
+    "exec": "\"/home/leo/.local/share/JetBrains/Toolbox/apps/clion/bin/clion\"",
+    "desktop": "jetbrains-clion-49708956-f6bf-43d6-96dc-1a035661672a.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Darktable",
+    "icon": "image://icon/darktable",
+    "exec": "/usr/bin/darktable",
+    "desktop": "org.darktable.darktable.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Discord",
+    "icon": "image://icon/discord",
+    "exec": "/usr/bin/discord --url --",
+    "desktop": "discord.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Displays Settings",
+    "icon": "image://icon/nwg-displays",
+    "exec": "nwg-displays",
+    "desktop": "nwg-displays.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Dolphin",
+    "icon": "image://icon/org.kde.dolphin",
+    "exec": "dolphin",
+    "desktop": "org.kde.dolphin.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Falstad Circuit Simulator",
+    "icon": "file:///home/leo/.local/share/Falstad/icons/falstad.png",
+    "exec": "env QT_QPA_PLATFORM=xcb $HOME/.local/share/Falstad/falstad.AppImage",
+    "desktop": "falstad.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Figma Linux",
+    "icon": "image://icon/figma-linux",
+    "exec": "/opt/figma-linux/figma-linux --no-sandbox --enable-oop-rasterization --ignore-gpu-blacklist -enable-experimental-canvas-features --enable-accelerated-2d-canvas --force-gpu-rasterization --enable-fast-unload --enable-accelerated-vpx-decode=3 --enable-tcp-fastopen --javascript-harmony --enable-checker-imaging --v8-cache-options=code --v8-cache-strategies-for-cache-storage=aggressive --enable-zero-copy --ui-enable-zero-copy --enable-native-gpu-memory-buffers --enable-webgl-image-chromium --enable-accelerated-video --enable-gpu-rasterization",
+    "desktop": "figma-linux.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "G'MIC-Qt",
+    "icon": "image://icon/gmic_qt",
+    "exec": "gmic_qt",
+    "desktop": "gmic_qt.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Ghostty",
+    "icon": "image://icon/com.mitchellh.ghostty",
+    "exec": "/usr/bin/ghostty --gtk-single-instance=true",
+    "desktop": "com.mitchellh.ghostty.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "GitHub Copilot",
+    "icon": "image://icon/github",
+    "exec": "github",
+    "desktop": "GitHub Copilot.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Hardware Locality lstopo",
+    "icon": "image://icon/hwloc",
+    "exec": "lstopo",
+    "desktop": "lstopo.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "IntelliJ IDEA 2026.2.3",
+    "icon": "image://icon/jetbrains-idea-56579662-c076-4bb2-b5e4-141f0a565c0e",
+    "exec": "\"/home/leo/.local/share/JetBrains/Toolbox/apps/intellij-idea/bin/idea\"",
+    "desktop": "jetbrains-idea-56579662-c076-4bb2-b5e4-141f0a565c0e.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "JetBrains Toolbox",
+    "icon": "image://icon/jetbrains-toolbox",
+    "exec": "/opt/jetbrains-toolbox/jetbrains-toolbox",
+    "desktop": "jetbrains-toolbox.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "kitty",
+    "icon": "image://icon/kitty",
+    "exec": "kitty",
+    "desktop": "kitty.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "LibreOffice",
+    "icon": "image://icon/libreoffice-startcenter",
+    "exec": "libreoffice",
+    "desktop": "libreoffice-startcenter.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "LibreOffice Base",
+    "icon": "image://icon/libreoffice-base",
+    "exec": "libreoffice --base",
+    "desktop": "libreoffice-base.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "LibreOffice Calc",
+    "icon": "image://icon/libreoffice-calc",
+    "exec": "libreoffice --calc",
+    "desktop": "libreoffice-calc.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "LibreOffice Draw",
+    "icon": "image://icon/libreoffice-draw",
+    "exec": "libreoffice --draw",
+    "desktop": "libreoffice-draw.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "LibreOffice Impress",
+    "icon": "image://icon/libreoffice-impress",
+    "exec": "libreoffice --impress",
+    "desktop": "libreoffice-impress.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "LibreOffice Math",
+    "icon": "image://icon/libreoffice-math",
+    "exec": "libreoffice --math",
+    "desktop": "libreoffice-math.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "LibreOffice Writer",
+    "icon": "image://icon/libreoffice-writer",
+    "exec": "libreoffice --writer",
+    "desktop": "libreoffice-writer.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Media Player",
+    "icon": "file:///home/leo/Pictures/icons/mediaPlayer/pic.jpg",
+    "exec": "quickshell --no-duplicate -p /home/leo/Documents/test/test2/quickshell_media_player/mediaPlayerFullscreen.qml",
+    "desktop": "media-player.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Min",
+    "icon": "image://icon/min-browser",
+    "exec": "min-browser",
+    "desktop": "min-browser.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Neovim",
+    "icon": "image://icon/nvim",
+    "exec": "kitty -e nvim",
+    "desktop": "nvim.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Notion",
+    "icon": "image://icon/notion",
+    "exec": "notion-app",
+    "desktop": "notion.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Okular",
+    "icon": "image://icon/okular",
+    "exec": "okular",
+    "desktop": "org.kde.okular.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "PyCharm 2026.2.3",
+    "icon": "image://icon/jetbrains-pycharm-3dc53844-f085-40ec-a276-a4189667f4b7",
+    "exec": "\"/home/leo/.local/share/JetBrains/Toolbox/apps/pycharm/bin/pycharm\"",
+    "desktop": "jetbrains-pycharm-3dc53844-f085-40ec-a276-a4189667f4b7.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Qt Assistant",
+    "icon": "image://icon/assistant",
+    "exec": "assistant6",
+    "desktop": "assistant.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Qt Creator",
+    "icon": "image://icon/QtProject-qtcreator",
+    "exec": "qtcreator",
+    "desktop": "org.qt-project.qtcreator.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Qt D-Bus Viewer",
+    "icon": "image://icon/qdbusviewer",
+    "exec": "qdbusviewer6",
+    "desktop": "qdbusviewer.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Qt Linguist",
+    "icon": "image://icon/linguist",
+    "exec": "linguist6",
+    "desktop": "linguist.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Qt V4L2 test Utility",
+    "icon": "image://icon/qv4l2",
+    "exec": "qv4l2",
+    "desktop": "qv4l2.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Qt V4L2 video capture utility",
+    "icon": "image://icon/qvidcap",
+    "exec": "qvidcap",
+    "desktop": "qvidcap.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Qt Widgets Designer",
+    "icon": "image://icon/designer",
+    "exec": "designer6",
+    "desktop": "designer.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Rider 2026.2.3.1",
+    "icon": "image://icon/jetbrains-rider-3786e3a5-fe80-4201-b364-4f15839eb848",
+    "exec": "\"/home/leo/.local/share/JetBrains/Toolbox/apps/rider/bin/rider\"",
+    "desktop": "jetbrains-rider-3786e3a5-fe80-4201-b364-4f15839eb848.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Sober",
+    "icon": "image://icon/org.vinegarhq.Sober",
+    "exec": "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=sober --file-forwarding org.vinegarhq.Sober -- @@u  @@",
+    "desktop": "org.vinegarhq.Sober.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Spotify",
+    "icon": "image://icon/spotify-client",
+    "exec": "spotify --uri=",
+    "desktop": "spotify.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Steam",
+    "icon": "image://icon/steam",
+    "exec": "/usr/bin/steam",
+    "desktop": "steam.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Visual Studio Code",
+    "icon": "image://icon/vscode",
+    "exec": "code",
+    "desktop": "com.microsoft.VSCode.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "VLC media player",
+    "icon": "image://icon/vlc",
+    "exec": "/usr/bin/vlc --started-from-file",
+    "desktop": "vlc.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "WebStorm 2026.2.3",
+    "icon": "image://icon/jetbrains-webstorm-f97d3ec3-5a94-45b2-8437-388580abd6da",
+    "exec": "\"/home/leo/.local/share/JetBrains/Toolbox/apps/webstorm/bin/webstorm\"",
+    "desktop": "jetbrains-webstorm-f97d3ec3-5a94-45b2-8437-388580abd6da.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "XDvi",
+    "icon": null,
+    "exec": "xdvi",
+    "desktop": "xdvi.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  },
+  {
+    "name": "Zen Browser",
+    "icon": "image://icon/zen-browser",
+    "exec": "/opt/zen-browser-bin/zen-bin",
+    "desktop": "zen.desktop",
+    "type": "Application",
+    "hidden": false,
+    "no_display": false
+  }
+]
