@@ -14,6 +14,8 @@
   - Colors change automaticaly using matugen
   - Wlogout like menu
   - button in the bottom of the left panel to load the wlogout like menu
+- **[UPD3]**
+  - Added a quickMenu panel (not working for now)
 
 ### Changed
 
