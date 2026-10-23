@@ -14,4 +14,20 @@ QtObject {
     function closeChooseMenu() {
         chooseMenuOpen = false;
     }
+
+    property bool quickSettingsOpen: false
+    property int quickSettingsTab: 0
+
+    function openQuickSettings(tab = 0) {
+        quickSettingsTab = tab;
+        quickSettingsOpen = true;
+    }
+
+    function toggleQuickSettings() {
+        quickSettingsOpen = !quickSettingsOpen;
+    }
+
+    function closeQuickSettings() {
+        quickSettingsOpen = false;
+    }
 }

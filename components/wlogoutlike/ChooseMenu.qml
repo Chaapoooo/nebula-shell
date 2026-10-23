@@ -132,10 +132,10 @@ PanelWindow {
                         Quickshell.execDetached(["sh", "-c", "systemctl reboot"]);
                     } else if (wlogoutWindow.activeIndex === 2) {
                         wlogoutWindow.closeRequested();
-                        Quickshell.execDetached(["sh", "-c", "./.config/quickshell/lockscreen/lock.sh"]);
+                        Quickshell.execDetached(["sh", "-c", "$HOME/.config/quickshell/lockscreen/lock.sh"]);
                     } else if (wlogoutWindow.activeIndex === 3) {
                         wlogoutWindow.closeRequested();
-                        Quickshell.execDetached(["sh", "-c", "./.config/quickshell/lockscreen/lock.sh & systemctl suspend"]);
+                        Quickshell.execDetached(["sh", "-c", "$HOME/.config/quickshell/lockscreen/lock.sh & systemctl suspend"]);
                     }
                 }
             }
@@ -250,7 +250,7 @@ PanelWindow {
 
                     Image {
                         id: shutdownImage
-                        source: "/home/leo/Documents/Projects/nebula-shell/assets/icons/rofilike/shutdown.png"
+                        source: "../../assets/icons/rofilike/shutdown.png"
                         anchors {
                             centerIn: parent
                         }
@@ -312,7 +312,7 @@ PanelWindow {
 
                     Image {
                         id: rebootImage
-                        source: "/home/leo/Documents/Projects/nebula-shell/assets/icons/rofilike/reboot.png"
+                        source: "../../assets/icons/rofilike/reboot.png"
                         anchors {
                             centerIn: parent
                         }
@@ -374,7 +374,7 @@ PanelWindow {
 
                     Image {
                         id: lockImage
-                        source: "/home/leo/Documents/Projects/nebula-shell/assets/icons/rofilike/lock.png"
+                        source: "../../assets/icons/rofilike/lock.png"
                         anchors {
                             centerIn: parent
                         }
@@ -436,7 +436,7 @@ PanelWindow {
 
                     Image {
                         id: suspendImage
-                        source: "/home/leo/Documents/Projects/nebula-shell/assets/icons/rofilike/suspend.png"
+                        source: "../../assets/icons/rofilike/suspend.png"
                         anchors {
                             centerIn: parent
                         }
@@ -482,7 +482,7 @@ PanelWindow {
                 border.color: Theme.outline
                 border.width: 1
 
-                property real targetY: buttonsRow.y + (wlogoutWindow.activeIndex * 56)
+                property real targetY: buttonsRow.y + (wlogoutWindow.activeIndex * 57)
 
                 property real fastY: targetY
                 property real slowY: targetY

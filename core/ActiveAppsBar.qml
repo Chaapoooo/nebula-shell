@@ -65,7 +65,7 @@ Rectangle {
     function loadAppIconsDatabase() {
         var xhr = new XMLHttpRequest();
 
-        xhr.open("GET", "file:///home/leo/Documents/Projects/nebula-shell/assets/out/apps.json", true);
+        xhr.open("GET", Qt.resolvedUrl("../assets/out/apps.json"), true);
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState !== XMLHttpRequest.DONE)

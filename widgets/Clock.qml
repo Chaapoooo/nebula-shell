@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
-import QtQuick.Shapes
 import "../styles"
+import "../core"
 
 Rectangle {
     id: root
@@ -20,7 +20,13 @@ Rectangle {
         shadowColor: "#50000000"
         shadowBlur: 0.7
         shadowHorizontalOffset: 1.5
-        shadowVerticalOffset: 1.5
+        shadowVerticalOffset: 8
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+        onClicked: Store.quickSettingsOpen = !Store.quickSettingsOpen
     }
 
     property string timeString: "00:00"
@@ -69,70 +75,6 @@ Rectangle {
             font.bold: true
             font.family: "Inter"
             color: Theme.colorOnSurfaceVariant
-        }
-    }
-
-    Shape {
-        anchors.right: root.left
-        anchors.top: parent.top
-        anchors.topMargin: 6
-
-        width: 8
-        height: 8
-
-        ShapePath {
-            fillColor: Theme.surface
-            strokeColor: "transparent"
-            startX: 0
-            startY: 0
-            PathLine {
-                x: 8
-                y: 0
-            }
-            PathLine {
-                x: 8
-                y: 8
-            }
-            PathArc {
-                x: 0
-                y: 0
-                radiusX: 8
-                radiusY: 8
-                direction: PathArc.Counterclockwise
-            }
-        }
-    }
-
-    Shape {
-        anchors.left: root.right
-        anchors.top: parent.top
-        anchors.topMargin: 6
-
-        width: 8
-        height: 8
-
-        ShapePath {
-            fillColor: Theme.surface
-            strokeColor: "transparent"
-
-            startX: 8
-            startY: 0
-
-            PathLine {
-                x: 0
-                y: 0
-            }
-            PathLine {
-                x: 0
-                y: 8
-            }
-            PathArc {
-                x: 8
-                y: 0
-                radiusX: 8
-                radiusY: 8
-                direction: PathArc.Clockwise
-            }
         }
     }
 }

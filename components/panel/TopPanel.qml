@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Effects
+import QtQuick.Shapes
 import Quickshell
 import "../../widgets"
 import "../../styles"
@@ -40,5 +41,69 @@ PanelWindow {
     Clock {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
+
+        Shape {
+            anchors.right: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: 6
+
+            width: 8
+            height: 8
+
+            ShapePath {
+                fillColor: Theme.surface
+                strokeColor: "transparent"
+                startX: 0
+                startY: 0
+                PathLine {
+                    x: 8
+                    y: 0
+                }
+                PathLine {
+                    x: 8
+                    y: 8
+                }
+                PathArc {
+                    x: 0
+                    y: 0
+                    radiusX: 8
+                    radiusY: 8
+                    direction: PathArc.Counterclockwise
+                }
+            }
+        }
+
+        Shape {
+            anchors.left: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: 6
+
+            width: 8
+            height: 8
+
+            ShapePath {
+                fillColor: Theme.surface
+                strokeColor: "transparent"
+
+                startX: 8
+                startY: 0
+
+                PathLine {
+                    x: 0
+                    y: 0
+                }
+                PathLine {
+                    x: 0
+                    y: 8
+                }
+                PathArc {
+                    x: 8
+                    y: 0
+                    radiusX: 8
+                    radiusY: 8
+                    direction: PathArc.Clockwise
+                }
+            }
+        }
     }
 }
