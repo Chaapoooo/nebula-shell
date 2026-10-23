@@ -3,15 +3,16 @@ import QtQuick.Effects
 import Quickshell
 import Quickshell.Hyprland
 import Quickshell.Io
+import "../styles"
 
 Rectangle {
     id: root
     width: 32
-    color: "#D2D7E2"
+    color: Theme.surfaceContainer
     radius: Math.min(8, height / 2)
 
-    border.color: "transparent"
-    border.width: 1
+    border.color: Theme.outline
+    border.width: 0
 
     clip: true
 
@@ -21,7 +22,7 @@ Rectangle {
         shadowEnabled: true
         shadowColor: "#80000000"
         shadowBlur: 0.7
-        shadowHorizontalOffset: -3
+        shadowHorizontalOffset: 3
         shadowVerticalOffset: 3
     }
 
@@ -301,10 +302,10 @@ Rectangle {
 
         radius: 9
 
-        color: "#E7EDF9"
+        color: Theme.colorOnPrimary
 
-        border.width: 1
-        border.color: "#FFFFFF"
+        border.width: 0
+        border.color: Theme.outline
 
         property int activeIndex: root.activeClientIndex
 
@@ -430,7 +431,7 @@ Rectangle {
 
                     text: appDelegate.appClass.substring(0, 2).toUpperCase()
 
-                    color: "#646D7B"
+                    color: Theme.colorOnSurface
 
                     font {
                         pixelSize: 10
@@ -445,7 +446,7 @@ Rectangle {
 
                     radius: 8
 
-                    color: "#FFFFFF"
+                    color: Theme.colorOnSurface
 
                     opacity: appHover.hovered ? 0.45 : 0
 

@@ -1,0 +1,4 @@
+singleton Store 1.0 Store.qml
+ActiveAppsBar 1.0 ActiveAppsBar.qml
+Workspaces 1.0 Workspaces.qml
+Shutdown 1.0 Shutdown.qml

@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Effects
 import Quickshell
+import "../../styles"
 
 PanelWindow {
     anchors {
@@ -18,7 +19,7 @@ PanelWindow {
         anchors.right: parent.right
         height: 6
 
-        color: "#e7edf9"
+        color: Theme.surface
 
         layer.enabled: true
         layer.effect: MultiEffect {

@@ -1,8 +1,11 @@
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
+import "../../styles"
+import "../../core"
 
 PanelWindow {
     id: wlogoutWindow
@@ -15,7 +18,7 @@ PanelWindow {
         right: true
         left: true
     }
-    color: '#00ffffff'
+    color: 'transparent'
 
     MouseArea {
         anchors.fill: parent
@@ -30,19 +33,30 @@ PanelWindow {
         }
     }
 
+    GlobalShortcut {
+        name: "choosemenu"
+        description: "Basculer le menu d'alimentation"
+        onPressed: {
+            Store.toggleChooseMenu();
+        }
+    }
+
     focusable: true
     signal closeRequested
     signal lockRequested
     property bool uiLoaded: false
+    visible: Store.chooseMenuOpen
 
-    onHeightChanged: {
-        if (height > 0 && !uiLoaded) {
+    onVisibleChanged: {
+        if (visible) {
             startupTimer.start();
+        } else {
+            uiLoaded = false;
         }
     }
 
     onCloseRequested: {
-        Qt.quit();
+        Store.closeChooseMenu();
     }
 
     Shortcut {
@@ -84,7 +98,8 @@ PanelWindow {
                 verticalCenter: parent.verticalCenter
                 rightMargin: 0
             }
-            color: '#e7edf9'
+
+            color: Theme.surface
             width: buttonsRow.width + 24
             height: buttonsRow.height + 24
             topLeftRadius: 15
@@ -110,28 +125,20 @@ PanelWindow {
                     wlogoutWindow.closeRequested();
 
                     if (wlogoutWindow.activeIndex === 0) {
+                        wlogoutWindow.closeRequested();
                         Quickshell.execDetached(["sh", "-c", "systemctl poweroff"]);
                     } else if (wlogoutWindow.activeIndex === 1) {
+                        wlogoutWindow.closeRequested();
                         Quickshell.execDetached(["sh", "-c", "systemctl reboot"]);
                     } else if (wlogoutWindow.activeIndex === 2) {
+                        wlogoutWindow.closeRequested();
                         Quickshell.execDetached(["sh", "-c", "./.config/quickshell/lockscreen/lock.sh"]);
-                        wlogoutWindow.closeRequested();
                     } else if (wlogoutWindow.activeIndex === 3) {
-                        Quickshell.execDetached(["sh", "-c", "./.config/quickshell/lockscreen/lock.sh & systemctl suspend"]);
                         wlogoutWindow.closeRequested();
+                        Quickshell.execDetached(["sh", "-c", "./.config/quickshell/lockscreen/lock.sh & systemctl suspend"]);
                     }
                 }
             }
-
-            //layer.enabled: true
-            //layer.effect: MultiEffect {
-            //    autoPaddingEnabled: true
-            //    shadowEnabled: true
-            //    shadowColor: '#80000000'
-            //    shadowBlur: 0.7
-            //    shadowHorizontalOffset: -3
-            //    shadowVerticalOffset: 3
-            //}
 
             Shape {
                 anchors.left: mainWindow.right
@@ -143,7 +150,7 @@ PanelWindow {
                 height: 30
 
                 ShapePath {
-                    fillColor: "#e7edf9"
+                    fillColor: Theme.surface
                     strokeColor: "transparent"
 
                     startX: 30
@@ -178,7 +185,7 @@ PanelWindow {
                 height: 30
 
                 ShapePath {
-                    fillColor: "#e7edf9"
+                    fillColor: Theme.surface
                     strokeColor: "transparent"
 
                     startX: 30
@@ -213,7 +220,7 @@ PanelWindow {
 
                 Rectangle {
                     id: shutdownButtonArea
-                    color: (shutdownMouse.containsMouse || wlogoutWindow.activeIndex === 0) ? '#D2D7E2' : '#e7edf9'
+                    color: (shutdownMouse.containsMouse || wlogoutWindow.activeIndex === 0) ? Theme.outline : Theme.colorOnPrimary
                     height: 40
                     width: 40
                     radius: 8
@@ -275,7 +282,7 @@ PanelWindow {
                 }
                 Rectangle {
                     id: rebootButtonArea
-                    color: (rebootMouse.containsMouse || wlogoutWindow.activeIndex === 1) ? '#D2D7E2' : '#e7edf9'
+                    color: (rebootMouse.containsMouse || wlogoutWindow.activeIndex === 1) ? Theme.outline : Theme.colorOnPrimary
                     height: 40
                     width: 40
                     radius: 8
@@ -337,7 +344,7 @@ PanelWindow {
                 }
                 Rectangle {
                     id: lockButtonArea
-                    color: (lockMouse.containsMouse || wlogoutWindow.activeIndex === 2) ? '#D2D7E2' : '#e7edf9'
+                    color: (lockMouse.containsMouse || wlogoutWindow.activeIndex === 2) ? Theme.outline : Theme.colorOnPrimary
                     height: 40
                     width: 40
                     radius: 8
@@ -399,7 +406,7 @@ PanelWindow {
                 }
                 Rectangle {
                     id: suspendButtonArea
-                    color: (suspendMouse.containsMouse || wlogoutWindow.activeIndex === 3) ? '#D2D7E2' : '#e7edf9'
+                    color: (suspendMouse.containsMouse || wlogoutWindow.activeIndex === 3) ? Theme.outline : Theme.colorOnPrimary
                     height: 40
                     width: 40
                     radius: 8
@@ -471,8 +478,8 @@ PanelWindow {
                 width: 15
                 bottomLeftRadius: 5
                 topLeftRadius: 5
-                color: "#D2D7E2"
-                border.color: '#b6aab6ec'
+                color: Theme.primary
+                border.color: Theme.outline
                 border.width: 1
 
                 property real targetY: buttonsRow.y + (wlogoutWindow.activeIndex * 56)

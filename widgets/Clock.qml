@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
 import QtQuick.Shapes
+import "../styles"
 
 Rectangle {
     id: root
@@ -11,7 +12,7 @@ Rectangle {
     bottomLeftRadius: 12
     bottomRightRadius: 12
 
-    color: "#D2D7E2"
+    color: Theme.surface
 
     layer.enabled: true
     layer.effect: MultiEffect {
@@ -52,14 +53,14 @@ Rectangle {
             font.pixelSize: 13
             font.bold: true
             font.family: "Inter"
-            color: "#252628"
+            color: Theme.colorOnSurfaceVariant
         }
 
         Text {
             text: "•"
             font.pixelSize: 10
             font.family: "Inter"
-            color: "#90929A"
+            color: Theme.outline
         }
 
         Text {
@@ -67,7 +68,7 @@ Rectangle {
             font.pixelSize: 12
             font.bold: true
             font.family: "Inter"
-            color: "#252628"
+            color: Theme.colorOnSurfaceVariant
         }
     }
 
@@ -80,7 +81,7 @@ Rectangle {
         height: 8
 
         ShapePath {
-            fillColor: "#D2D7E2"
+            fillColor: Theme.surface
             strokeColor: "transparent"
             startX: 0
             startY: 0
@@ -111,7 +112,7 @@ Rectangle {
         height: 8
 
         ShapePath {
-            fillColor: "#D2D7E2"
+            fillColor: Theme.surface
             strokeColor: "transparent"
 
             startX: 8

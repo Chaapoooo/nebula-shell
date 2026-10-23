@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
 import Quickshell
+import "../../styles"
 
 PanelWindow {
     id: root
@@ -25,7 +26,7 @@ PanelWindow {
         anchors.bottom: parent.bottom
 
         width: 6
-        color: "#e7edf9"
+        color: Theme.surface
 
         layer.enabled: true
         layer.effect: MultiEffect {
@@ -54,7 +55,7 @@ PanelWindow {
         }
 
         ShapePath {
-            fillColor: "#e7edf9"
+            fillColor: Theme.surface
             strokeColor: "transparent"
 
             startX: 20
@@ -97,7 +98,7 @@ PanelWindow {
         }
 
         ShapePath {
-            fillColor: "#e7edf9"
+            fillColor: Theme.surface
             strokeColor: "transparent"
 
             startX: 20

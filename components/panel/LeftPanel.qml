@@ -1,10 +1,10 @@
 import QtQuick
 import QtQuick.Shapes
 import QtQuick.Effects
-import QtQuick.Layouts
 import Quickshell
 import "../../core"
 import "../../widgets"
+import "../../styles"
 
 PanelWindow {
     id: root
@@ -28,14 +28,14 @@ PanelWindow {
 
         width: 45
 
-        color: "#e7edf9"
+        color: Theme.surface
 
         layer.enabled: true
         layer.effect: MultiEffect {
             shadowEnabled: true
-            shadowColor: "#60000000" // Noir à 37% d'opacité
-            shadowBlur: 0.6          // Intensité du flou (entre 0.0 et 1.0)
-            shadowHorizontalOffset: 4 // Décale l'ombre vers la droite ( relief )
+            shadowColor: "#60000000"
+            shadowBlur: 0.6
+            shadowHorizontalOffset: 4
             shadowVerticalOffset: 0
         }
 
@@ -70,6 +70,15 @@ PanelWindow {
                 }
             }
         }
+
+        Shutdown {
+            id: shutdownButton
+            anchors {
+                bottom: parent.bottom
+                bottomMargin: 5
+                horizontalCenter: parent.horizontalCenter
+            }
+        }
     }
 
     Shape {
@@ -89,7 +98,7 @@ PanelWindow {
         }
 
         ShapePath {
-            fillColor: "#e7edf9"
+            fillColor: Theme.surface
             strokeColor: "transparent"
 
             startX: 0
@@ -131,7 +140,7 @@ PanelWindow {
         }
 
         ShapePath {
-            fillColor: "#e7edf9"
+            fillColor: Theme.surface
             strokeColor: "transparent"
 
             startX: 0

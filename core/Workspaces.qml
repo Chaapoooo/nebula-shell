@@ -1,8 +1,7 @@
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Effects
-import Quickshell
 import Quickshell.Hyprland
+import "../styles"
 
 Item {
     id: root
@@ -36,8 +35,8 @@ Item {
         height: 28
         radius: 12
 
-        color: "#D2D7E2"
-        border.color: "#FFFAFF"
+        color: Theme.primary
+        border.color: Theme.outline
         border.width: 0
 
         layer.enabled: true
@@ -122,7 +121,7 @@ Item {
                     font.pixelSize: (text === "·" || text === "•") ? 20 : 16
                     font.family: "JetBrainsMono Nerd Font"
 
-                    color: wsItem.isActive ? "#cba6f7" : "#a6adc8"
+                    color: wsItem.isActive ? Theme.colorOnPrimary : Theme.colorOnSurfaceVariant
 
                     opacity: (wsItem.baseIcon === "·" && !wsItem.isActive && !wsItem.isOccupiedState) ? 0.0 : 1.0
 
