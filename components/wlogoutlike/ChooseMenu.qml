@@ -44,19 +44,42 @@ PanelWindow {
     focusable: true
     signal closeRequested
     signal lockRequested
-    property bool uiLoaded: false
     visible: Store.chooseMenuOpen
 
     onVisibleChanged: {
         if (visible) {
             startupTimer.start();
         } else {
-            uiLoaded = false;
+            opened = false;
+        }
+    }
+
+    property bool opened: false
+
+    function requestClose() {
+        if (!visible)
+            return;
+        opened = false;
+        closeTimer.restart();
+    }
+
+    Timer {
+        id: closeTimer
+        interval: 250
+        onTriggered: {
+            Store.closeChooseMenu();
+        }
+    }
+
+    Connections {
+        target: Store
+        function onRequestCloseChooseMenu() {
+            wlogoutWindow.requestClose();
         }
     }
 
     onCloseRequested: {
-        Store.closeChooseMenu();
+        wlogoutWindow.requestClose();
     }
 
     Shortcut {
@@ -69,7 +92,7 @@ PanelWindow {
     Timer {
         id: startupTimer
         interval: 50
-        onTriggered: wlogoutWindow.uiLoaded = true
+        onTriggered: wlogoutWindow.opened = true
     }
 
     property int activeIndex: 0
@@ -80,11 +103,9 @@ PanelWindow {
         height: parent.height
         color: 'transparent'
 
-        x: wlogoutWindow.uiLoaded ? 0 : 150
+        x: wlogoutWindow.opened ? 0 : 150
 
         Behavior on x {
-            enabled: wlogoutWindow.uiLoaded
-
             NumberAnimation {
                 duration: 320
                 easing.type: Easing.OutQuad

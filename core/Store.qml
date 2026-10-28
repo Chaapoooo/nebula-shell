@@ -4,9 +4,14 @@ import QtQuick
 QtObject {
     id: root
     property bool chooseMenuOpen: false
+    signal requestCloseChooseMenu
 
     function toggleChooseMenu() {
-        chooseMenuOpen = !chooseMenuOpen;
+        if (chooseMenuOpen) {
+            requestCloseChooseMenu();
+        } else {
+            openChooseMenu();
+        }
     }
     function openChooseMenu() {
         chooseMenuOpen = true;
@@ -14,6 +19,8 @@ QtObject {
     function closeChooseMenu() {
         chooseMenuOpen = false;
     }
+
+    /////////////////////////////////////////
 
     property bool quickSettingsOpen: false
     property int quickSettingsTab: 0
@@ -23,8 +30,14 @@ QtObject {
         quickSettingsOpen = true;
     }
 
+    signal requestCloseQuickSettings
+
     function toggleQuickSettings() {
-        quickSettingsOpen = !quickSettingsOpen;
+        if (quickSettingsOpen) {
+            requestCloseQuickSettings();
+        } else {
+            openQuickSettings();
+        }
     }
 
     function closeQuickSettings() {

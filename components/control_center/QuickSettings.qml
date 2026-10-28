@@ -75,6 +75,13 @@ PanelWindow {
         }
     }
 
+    Connections {
+        target: Store
+        function onRequestCloseQuickSettings() {
+            root.requestClose();
+        }
+    }
+
     Shortcut {
         sequence: "Right"
         onActivated: {

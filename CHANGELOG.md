@@ -16,6 +16,8 @@
   - button in the bottom of the left panel to load the wlogout like menu
 - **[UPD3]**
   - Added a quickMenu panel (not working for now)
+- **[UPD4]**
+  - Multiple ways of opening the quick menu !
 
 ### Changed
 
@@ -26,6 +28,9 @@
 
 - **[UPD2]**
   - Proper way of using the wlogout like menu
+- **[UPD4]**
+  - Working animation for quicksettings menu !
+  - Fixed closing animation for Choosemenu
 
 ### Removed
 

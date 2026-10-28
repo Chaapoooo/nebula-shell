@@ -26,7 +26,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
-        onClicked: Store.quickSettingsOpen = !Store.quickSettingsOpen
+        onClicked: Store.toggleQuickSettings()
     }
 
     property string timeString: "00:00"
