@@ -18,11 +18,16 @@
   - Added a quickMenu panel (not working for now)
 - **[UPD4]**
   - Multiple ways of opening the quick menu !
+- **[UPD5]**
+  - Added SideOSD (future implementation of volume and brightness slider)
+  - Added many animations
 
 ### Changed
 
 - **[UPD2]**
   - Changed hard coded colors
+- **[UPD5]**
+  - Changed most of the animations
 
 ### Fixed
 
@@ -31,6 +36,9 @@
 - **[UPD4]**
   - Working animation for quicksettings menu !
   - Fixed closing animation for Choosemenu
+- **[UPD5]**
+  - Fixed rounded corners bugging animations
+  - Fixed icons in ChooseMenu.qml
 
 ### Removed
 
