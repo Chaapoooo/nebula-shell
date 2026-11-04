@@ -38,7 +38,13 @@ PanelWindow {
         description: "Basculer le menu d'alimentation"
         onPressed: {
             Store.toggleChooseMenu();
+            openChooseMenu();
         }
+    }
+
+    function openChooseMenu() {
+        Store.closeAllModals("chooseMenu");
+        Store.chooseMenuOpen = true;
     }
 
     focusable: true
@@ -103,7 +109,7 @@ PanelWindow {
         height: parent.height
         color: 'transparent'
 
-        x: wlogoutWindow.opened ? 0 : 150
+        x: wlogoutWindow.opened ? 0 : 0
 
         Behavior on x {
             NumberAnimation {
@@ -121,10 +127,24 @@ PanelWindow {
             }
 
             color: Theme.surface
-            width: buttonsRow.width + 24
-            height: buttonsRow.height + 24
+            width: wlogoutWindow.opened ? buttonsRow.width + 24 : 50
+            height: wlogoutWindow.opened ? buttonsRow.height + 24 : 0
             topLeftRadius: 15
             bottomLeftRadius: 15
+
+            Behavior on height {
+                NumberAnimation {
+                    duration: 200
+                    easing: Easing.OutCubic
+                }
+            }
+
+            Behavior on width {
+                NumberAnimation {
+                    duration: 250
+                    easing: Easing.OutCubic
+                }
+            }
 
             Shortcut {
                 sequence: "Down"
@@ -163,9 +183,16 @@ PanelWindow {
 
             Shape {
                 anchors.left: mainWindow.right
-                anchors.leftMargin: -36
+                anchors.leftMargin: wlogoutWindow.opened ? -36 : 0
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: -30
+
+                Behavior on anchors.rightMargin {
+                    NumberAnimation {
+                        duration: 150
+                        easing: Easing.OutCubic
+                    }
+                }
 
                 width: 30
                 height: 30
@@ -198,9 +225,16 @@ PanelWindow {
             }
             Shape {
                 anchors.right: mainWindow.right
-                anchors.rightMargin: 6
+                anchors.rightMargin: wlogoutWindow.opened ? 6 : -36
                 anchors.top: parent.top
                 anchors.topMargin: -30
+
+                Behavior on anchors.rightMargin {
+                    NumberAnimation {
+                        duration: 150
+                        easing: Easing.OutCubic
+                    }
+                }
 
                 width: 30
                 height: 30
@@ -235,16 +269,30 @@ PanelWindow {
             Column {
                 id: buttonsRow
                 anchors {
-                    centerIn: parent
+                    centerIn: mainWindow
                 }
                 spacing: 16
 
                 Rectangle {
                     id: shutdownButtonArea
                     color: (shutdownMouse.containsMouse || wlogoutWindow.activeIndex === 0) ? Theme.outline : Theme.colorOnPrimary
-                    height: 40
-                    width: 40
+                    height: wlogoutWindow.opened ? 40 : 0
+                    width: wlogoutWindow.opened ? 40 : 0
                     radius: 8
+
+                    Behavior on height {
+                        NumberAnimation {
+                            duration: 200
+                            easing: Easing.OutCubic
+                        }
+                    }
+
+                    Behavior on width {
+                        NumberAnimation {
+                            duration: 250
+                            easing: Easing.OutCubic
+                        }
+                    }
 
                     layer.enabled: true
                     layer.effect: MultiEffect {
@@ -276,10 +324,10 @@ PanelWindow {
                             centerIn: parent
                         }
                         fillMode: Image.PreserveAspectCrop
-                        height: 30
-                        width: 30
+                        height: wlogoutWindow.opened ? 30 : 0
+                        width: wlogoutWindow.opened ? 30 : 0
 
-                        scale: (wlogoutWindow.activeIndex === 0 || shutdownMouse.containsMouse) ? 1.15 : 0.9
+                        scale: (wlogoutWindow.activeIndex === 0 || shutdownMouse.containsMouse) ? 1.15 : wlogoutWindow.opened ? 0.9 : 0
                         transformOrigin: Item.Center
 
                         Behavior on scale {
@@ -304,9 +352,23 @@ PanelWindow {
                 Rectangle {
                     id: rebootButtonArea
                     color: (rebootMouse.containsMouse || wlogoutWindow.activeIndex === 1) ? Theme.outline : Theme.colorOnPrimary
-                    height: 40
-                    width: 40
+                    height: wlogoutWindow.opened ? 40 : 0
+                    width: wlogoutWindow.opened ? 40 : 0
                     radius: 8
+
+                    Behavior on height {
+                        NumberAnimation {
+                            duration: 200
+                            easing: Easing.OutCubic
+                        }
+                    }
+
+                    Behavior on width {
+                        NumberAnimation {
+                            duration: 250
+                            easing: Easing.OutCubic
+                        }
+                    }
 
                     layer.enabled: true
                     layer.effect: MultiEffect {
@@ -338,10 +400,10 @@ PanelWindow {
                             centerIn: parent
                         }
                         fillMode: Image.PreserveAspectCrop
-                        height: 30
-                        width: 30
+                        height: wlogoutWindow.opened ? 30 : 0
+                        width: wlogoutWindow.opened ? 30 : 0
 
-                        scale: (wlogoutWindow.activeIndex === 1 || rebootMouse.containsMouse) ? 1.15 : 0.9
+                        scale: (wlogoutWindow.activeIndex === 1 || rebootMouse.containsMouse) ? 1.15 : wlogoutWindow.opened ? 0.9 : 0
 
                         transformOrigin: Item.Center
                         Behavior on scale {
@@ -366,9 +428,23 @@ PanelWindow {
                 Rectangle {
                     id: lockButtonArea
                     color: (lockMouse.containsMouse || wlogoutWindow.activeIndex === 2) ? Theme.outline : Theme.colorOnPrimary
-                    height: 40
-                    width: 40
+                    height: wlogoutWindow.opened ? 40 : 0
+                    width: wlogoutWindow.opened ? 40 : 0
                     radius: 8
+
+                    Behavior on height {
+                        NumberAnimation {
+                            duration: 200
+                            easing: Easing.OutCubic
+                        }
+                    }
+
+                    Behavior on width {
+                        NumberAnimation {
+                            duration: 250
+                            easing: Easing.OutCubic
+                        }
+                    }
 
                     layer.enabled: true
                     layer.effect: MultiEffect {
@@ -400,10 +476,10 @@ PanelWindow {
                             centerIn: parent
                         }
                         fillMode: Image.PreserveAspectCrop
-                        height: 30
-                        width: 30
+                        height: wlogoutWindow.opened ? 30 : 0
+                        width: wlogoutWindow.opened ? 30 : 0
 
-                        scale: (wlogoutWindow.activeIndex === 2 || lockMouse.containsMouse) ? 1.15 : 0.9
+                        scale: (wlogoutWindow.activeIndex === 2 || lockMouse.containsMouse) ? 1.15 : wlogoutWindow.opened ? 0.9 : 0
                         transformOrigin: Item.Center
 
                         Behavior on scale {
@@ -428,9 +504,23 @@ PanelWindow {
                 Rectangle {
                     id: suspendButtonArea
                     color: (suspendMouse.containsMouse || wlogoutWindow.activeIndex === 3) ? Theme.outline : Theme.colorOnPrimary
-                    height: 40
-                    width: 40
+                    height: wlogoutWindow.opened ? 40 : 0
+                    width: wlogoutWindow.opened ? 40 : 0
                     radius: 8
+
+                    Behavior on height {
+                        NumberAnimation {
+                            duration: 200
+                            easing: Easing.OutCubic
+                        }
+                    }
+
+                    Behavior on width {
+                        NumberAnimation {
+                            duration: 250
+                            easing: Easing.OutCubic
+                        }
+                    }
 
                     layer.enabled: true
                     layer.effect: MultiEffect {
@@ -462,10 +552,10 @@ PanelWindow {
                             centerIn: parent
                         }
                         fillMode: Image.PreserveAspectCrop
-                        height: 30
-                        width: 30
+                        height: wlogoutWindow.opened ? 30 : 0
+                        width: wlogoutWindow.opened ? 30 : 0
 
-                        scale: (wlogoutWindow.activeIndex === 3 || suspendMouse.containsMouse) ? 1.15 : 0.9
+                        scale: (wlogoutWindow.activeIndex === 3 || suspendMouse.containsMouse) ? 1.15 : wlogoutWindow.opened ? 0.9 : 0
                         transformOrigin: Item.Center
 
                         Behavior on scale {
@@ -496,7 +586,7 @@ PanelWindow {
                 anchors.right: buttonsRow.right
                 anchors.rightMargin: -20
 
-                width: 15
+                width: wlogoutWindow.opened ? 15 : 0
                 bottomLeftRadius: 5
                 topLeftRadius: 5
                 color: Theme.primary
@@ -522,7 +612,21 @@ PanelWindow {
                 }
 
                 y: Math.min(fastY, slowY)
-                height: (Math.max(fastY, slowY) + 35) - y
+                height: wlogoutWindow.opened ? (Math.max(fastY, slowY) + 35) - y : 0
+
+                Behavior on height {
+                    NumberAnimation {
+                        duration: 200
+                        easing: Easing.OutCubic
+                    }
+                }
+
+                Behavior on width {
+                    NumberAnimation {
+                        duration: 250
+                        easing: Easing.OutCubic
+                    }
+                }
 
                 layer.enabled: true
                 layer.effect: MultiEffect {

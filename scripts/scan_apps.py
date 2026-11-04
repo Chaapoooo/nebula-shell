@@ -14,8 +14,10 @@ import shlex
 from pathlib import Path
 from typing import Iterable
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = PROJECT_ROOT / "assets" / "out" / "apps.json"
+#PROJECT_ROOT = Path(__file__).resolve().parents[1]
+#DEFAULT_OUTPUT = PROJECT_ROOT / "assets" / "out" / "apps.json"
+
+DEFAULT_OUTPUT = Path.home() / "Documents" / "nebula-shell" / "assets" / "out" / "apps.json"
 
 _FIELD_CODE_RE = re.compile(r"%(?:[fFuUick])")
 

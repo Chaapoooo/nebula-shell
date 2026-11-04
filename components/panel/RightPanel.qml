@@ -3,6 +3,8 @@ import QtQuick.Shapes
 import QtQuick.Effects
 import Quickshell
 import "../../styles"
+import "../../components/osd"
+import "../../core"
 
 PanelWindow {
     id: root
@@ -18,6 +20,20 @@ PanelWindow {
     exclusiveZone: 6
 
     color: "transparent"
+
+    MouseArea {
+        id: edgeMouse
+        anchors.fill: parent
+        hoverEnabled: true
+
+        onEntered: {
+            Store.openSideOsd();
+        }
+
+        onExited: {
+            Store.sideOsdTimer.restart();
+        }
+    }
 
     Rectangle {
         id: mainRectangle
@@ -35,6 +51,12 @@ PanelWindow {
             shadowBlur: 0.5
             shadowHorizontalOffset: -3
             shadowVerticalOffset: 3
+        }
+
+        SideOSD {
+            id: volumeOsd
+            anchors.right: true
+            visible: Store.sideOsdOpen
         }
     }
 

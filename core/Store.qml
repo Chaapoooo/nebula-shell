@@ -43,4 +43,55 @@ QtObject {
     function closeQuickSettings() {
         quickSettingsOpen = false;
     }
+
+    ////////////////////////////////////////
+
+    property bool sideOsdOpen: false
+    property string sideOsdMode: "all" // "all", "volume", "brightness"
+
+    signal requestCloseSideOsd
+
+    function openSideOsd(mode = "all") {
+        sideOsdMode = mode;
+        sideOsdOpen = true;
+
+        if (mode !== "all") {
+            sideOsdTimer.restart();
+        } else {
+            sideOsdTimer.stop();
+        }
+    }
+
+    function triggerVolumeOsd() {
+        openSideOsd("volume");
+    }
+
+    function triggerBrightnessOsd() {
+        openSideOsd("brightness");
+    }
+
+    function closeSideOsd() {
+        sideOsdOpen = false;
+    }
+
+    property var sideOsdTimer: Timer {
+        interval: 100
+        onTriggered: {
+            root.requestCloseSideOsd();
+        }
+    }
+
+    //////////////////////////////////////////////
+
+    function closeAllModals(except = "") {
+        if (except !== "chooseMenu" && chooseMenuOpen) {
+            requestCloseChooseMenu();
+        }
+        if (except !== "quickSettings" && quickSettingsOpen) {
+            requestCloseQuickSettings();
+        }
+        if (except !== "sideOsd" && sideOsdOpen) {
+            requestCloseSideOsd();
+        }
+    }
 }

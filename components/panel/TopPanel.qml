@@ -4,6 +4,7 @@ import QtQuick.Shapes
 import Quickshell
 import "../../widgets"
 import "../../styles"
+import "../../core"
 
 PanelWindow {
     id: root
@@ -35,6 +36,20 @@ PanelWindow {
             shadowColor: "#60000000"
             shadowBlur: 0.5
             shadowVerticalOffset: 3
+        }
+
+        MouseArea {
+            id: edgeMouse
+            anchors.fill: parent
+            hoverEnabled: true
+
+            onEntered: {
+                Store.openQuickSettings();
+            }
+
+            onExited: {
+                Store.requestCloseQuickSettings();
+            }
         }
     }
 

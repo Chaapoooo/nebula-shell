@@ -28,15 +28,22 @@ PanelWindow {
         sequence: 'Escape'
         onActivated: root.requestClose()
     }
+
     GlobalShortcut {
         name: "quicksettings"
         onPressed: {
             if (root.opened) {
                 root.requestClose();
             } else {
-                Store.openQuickSettings();
+                openQuickSettings();
             }
         }
+    }
+
+    function openQuickSettings(tab = 0) {
+        Store.closeAllModals("quickSettings");
+        Store.quickSettingsTab = tab;
+        Store.quickSettingsOpen = true;
     }
 
     MouseArea {
@@ -145,7 +152,7 @@ PanelWindow {
     Clock {
         anchors.top: mainRectangle.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        width: root.opened ? 200 : 120
+        width: root.opened ? 300 : 120
 
         Behavior on width {
             NumberAnimation {
@@ -219,7 +226,14 @@ PanelWindow {
     Shape {
         anchors.right: mainRectangle.left
         anchors.top: parent.top
-        anchors.topMargin: 6
+        anchors.topMargin: root.opened ? 6 : -31
+
+        Behavior on anchors.topMargin {
+            NumberAnimation {
+                duration: 250
+                easing: Easing.OutCubic
+            }
+        }
 
         width: 25
         height: 25
@@ -249,7 +263,14 @@ PanelWindow {
     Shape {
         anchors.left: mainRectangle.right
         anchors.top: parent.top
-        anchors.topMargin: 6
+        anchors.topMargin: root.opened ? 6 : -31
+
+        Behavior on anchors.topMargin {
+            NumberAnimation {
+                duration: 250
+                easing: Easing.OutCubic
+            }
+        }
 
         width: 25
         height: 25
