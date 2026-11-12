@@ -21,20 +21,6 @@ PanelWindow {
 
     color: "transparent"
 
-    MouseArea {
-        id: edgeMouse
-        anchors.fill: parent
-        hoverEnabled: true
-
-        onEntered: {
-            Store.openSideOsd();
-        }
-
-        onExited: {
-            Store.sideOsdTimer.restart();
-        }
-    }
-
     Rectangle {
         id: mainRectangle
         anchors.right: parent.right
@@ -51,6 +37,18 @@ PanelWindow {
             shadowBlur: 0.5
             shadowHorizontalOffset: -3
             shadowVerticalOffset: 3
+        }
+
+        MouseArea {
+            id: edgeMouse
+            anchors.fill: parent
+            hoverEnabled: true
+
+            onEntered: {
+                Store.openSideOsd();
+                Store.sideOsdTimer.interval = 1;
+                Store.sideOsdTimer.stop();
+            }
         }
 
         SideOSD {

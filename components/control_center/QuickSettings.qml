@@ -146,6 +146,147 @@ PanelWindow {
 
         Row {
             id: widgetsPagesRow
+
+            anchors.fill: parent
+            anchors.margins: 14
+            spacing: 10
+
+            Item {
+                id: leftArea
+
+                width: (parent.width - parent.spacing) * 2 / 3
+                height: parent.height
+
+                Column {
+                    anchors.fill: parent
+                    spacing: 10
+
+                    Row {
+                        id: statusRow
+
+                        width: parent.width
+                        height: (parent.height - parent.spacing) * 0.34
+
+                        Rectangle {
+                            id: wifi
+                            width: (statusRow.width) / 3
+                            height: statusRow.height
+                            color: Theme.surfaceContainer
+
+                            topLeftRadius: 8
+                            bottomLeftRadius: 8
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: "Wifi"
+                                color: Theme.colorOnSurface
+                            }
+                        }
+
+                        Rectangle {
+                            id: bluetooth
+                            width: (statusRow.width) / 3
+                            height: statusRow.height
+                            color: Theme.surfaceContainer
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: "Bluetooth"
+                                color: Theme.colorOnSurface
+                            }
+                        }
+
+                        Rectangle {
+                            id: batterie
+                            width: (statusRow.width) / 3
+                            height: statusRow.height
+                            color: Theme.surfaceContainer
+
+                            topRightRadius: 8
+                            bottomRightRadius: 8
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: "Batterie"
+                                color: Theme.colorOnSurface
+                            }
+                        }
+                    }
+
+                    Row {
+                        width: parent.width
+                        height: parent.height - statusRow.height - parent.spacing
+                        spacing: 10
+
+                        Rectangle {
+                            id: clockPlaceholder
+
+                            width: height
+                            height: parent.height
+                            radius: 8
+                            color: Theme.surfaceContainer
+
+                            bottomLeftRadius: 38
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: "Horloge"
+                                color: Theme.colorOnSurface
+                            }
+                        }
+
+                        Column {
+                            width: parent.width - clockPlaceholder.width - parent.spacing
+                            height: parent.height
+
+                            Rectangle {
+                                width: parent.width
+                                height: (parent.height) * 0.4
+                                color: Theme.surfaceContainer
+
+                                topLeftRadius: 8
+                                topRightRadius: 8
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "Compte utilisateur"
+                                    color: Theme.colorOnSurface
+                                }
+                            }
+
+                            Rectangle {
+                                width: parent.width
+                                height: parent.height - children[0].height - 40
+                                color: Theme.surfaceContainer
+
+                                bottomLeftRadius: 8
+                                bottomRightRadius: 8
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "GIF animé (à ajouter)"
+                                    color: Theme.colorOnSurface
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                width: parent.width - leftArea.width - parent.spacing
+                height: parent.height
+                radius: 8
+                color: Theme.surfaceContainer
+
+                bottomRightRadius: 38
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "Lecteur média"
+                    color: Theme.colorOnSurface
+                }
+            }
         }
     }
 

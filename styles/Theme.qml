@@ -3,15 +3,15 @@ import QtQuick
 
 QtObject {
     // Couleurs générées automatiquement par Matugen (Material You)
-    readonly property color primary: "#afc6ff"
-    readonly property color colorOnPrimary: "#132f60"
+    readonly property color primary: "#d4c872"
+    readonly property color colorOnPrimary: "#363100"
 
-    readonly property color surface: "#121318"
-    readonly property color surfaceContainer: "#1e1f25"
-    readonly property color colorOnSurface: "#e2e2e9"
-    readonly property color colorOnSurfaceVariant: "#c5c6d0"
+    readonly property color surface: "#15140c"
+    readonly property color surfaceContainer: "#212017"
+    readonly property color colorOnSurface: "#e7e2d5"
+    readonly property color colorOnSurfaceVariant: "#cbc6b5"
 
-    readonly property color outline: "#8f9099"
+    readonly property color outline: "#959181"
     readonly property color error: "#ffb4ab"
     readonly property color colorOnError: "#690005"
 }

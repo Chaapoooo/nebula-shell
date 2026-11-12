@@ -3,11 +3,14 @@ import QtQuick.Shapes
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
+
 import "../../styles"
 import "../../core"
+import "../../widgets"
 
 PanelWindow {
     id: root
+
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.namespace: "quickshell-sideOSD"
     exclusionMode: "Ignore"
@@ -20,28 +23,33 @@ PanelWindow {
         left: true
     }
 
+    color: "transparent"
+
     MouseArea {
         anchors.fill: parent
-        onClicked: root.requestClose()
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+        onClicked: mouse => {
+            const point = osdBox.mapFromItem(root, mouse.x, mouse.y);
+
+            if (!osdBox.contains(point))
+                root.requestClose();
+        }
     }
 
     Shortcut {
         sequence: "Escape"
-        onActivated: {
-            root.requestClose();
-        }
+        onActivated: root.requestClose()
     }
-
-    color: "transparent"
 
     GlobalShortcut {
         name: "sideOSD"
+
         onPressed: {
-            if (root.opened) {
+            if (root.opened)
                 root.requestClose();
-            } else {
+            else
                 openSideOsd();
-            }
         }
     }
 
@@ -50,21 +58,22 @@ PanelWindow {
         Store.sideOsdMode = mode;
         Store.sideOsdOpen = true;
 
-        if (mode !== "all") {
+        if (mode !== "all")
             Store.sideOsdTimer.restart();
-        } else {
+        else
             Store.sideOsdTimer.stop();
-        }
     }
 
     property bool opened: false
+    property string hoverReturnMode: "all"
+
     onVisibleChanged: {
         if (visible)
             startupTimer.start();
-        else {
+        else
             root.requestClose();
-        }
     }
+
     Timer {
         id: startupTimer
         interval: 50
@@ -73,6 +82,7 @@ PanelWindow {
 
     Connections {
         target: Store
+
         function onRequestCloseSideOsd() {
             root.requestClose();
         }
@@ -81,6 +91,7 @@ PanelWindow {
     function requestClose() {
         if (!root.opened)
             return;
+
         root.opened = false;
         closeTimer.restart();
     }
@@ -91,16 +102,30 @@ PanelWindow {
         onTriggered: Store.closeSideOsd()
     }
 
+    Item {
+        anchors.right: parent.right
+        anchors.rightMargin: 6
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: 6
+
+        HoverHandler {
+            onHoveredChanged: {
+                if (hovered && root.opened)
+                    Store.sideOsdTimer.restart();
+            }
+        }
+    }
+
     Rectangle {
         id: osdBox
+
         anchors {
             right: parent.right
             verticalCenter: parent.verticalCenter
         }
 
-        x: 0
-
-        height: root.opened ? 420 : 0
+        height: root.opened ? mainColumn.height + 36 : 0
         width: root.opened ? 70 : 0
 
         topLeftRadius: 28
@@ -122,30 +147,93 @@ PanelWindow {
             }
         }
 
-        MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
+        HoverHandler {
+            onHoveredChanged: {
+                if (hovered) {
+                    root.hoverReturnMode = Store.sideOsdMode;
+                    Store.sideOsdTimer.stop();
 
-            onEntered: {
-                Store.sideOsdTimer.stop();
+                    if (root.hoverReturnMode !== "all")
+                        Store.sideOsdMode = "all";
+                } else if (root.opened) {
+                    if (root.hoverReturnMode === "all") {
+                        root.requestClose();
+                    } else {
+                        Store.sideOsdMode = root.hoverReturnMode;
+                        Store.sideOsdTimer.restart();
+                    }
+                }
+            }
+        }
+
+        Column {
+            id: mainColumn
+
+            anchors {
+                verticalCenter: parent.verticalCenter
+                horizontalCenter: parent.horizontalCenter
+                margins: 18
             }
 
-            onExited: {
-                Store.sideOsdTimer.restart();
+            width: parent.width - 31
+            spacing: 12
+
+            height: {
+                if (volumeSlider.visible && brightnessSlider.visible)
+                    return volumeSlider.height + brightnessSlider.height + spacing;
+                if (volumeSlider.visible)
+                    return volumeSlider.height;
+                if (brightnessSlider.visible)
+                    return brightnessSlider.height;
+                return 0;
+            }
+
+            VolumeSlider {
+                id: volumeSlider
+
+                width: parent.width
+                height: 165
+                visible: Store.sideOsdMode === "all" || Store.sideOsdMode === "volume"
+                opacity: root.opened && enabled ? 1 : 0
+
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 150
+                        easing: Easing.OutCubic
+                    }
+                }
+            }
+
+            BrightnessSlider {
+                id: brightnessSlider
+
+                width: parent.width
+                height: 165
+                visible: Store.sideOsdMode === "all" || Store.sideOsdMode === "brightness"
+                opacity: root.opened && enabled ? 1 : 0
+
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 150
+                        easing: Easing.OutCubic
+                    }
+                }
             }
         }
     }
 
     Shape {
-        anchors.left: osdBox.right
-        anchors.leftMargin: root.opened ? -36 : 0
-        anchors.bottom: osdBox.bottom
-        anchors.bottomMargin: -30
+        anchors {
+            left: osdBox.right
+            leftMargin: root.opened ? -36 : 0
+            bottom: osdBox.bottom
+            bottomMargin: -30
+        }
 
-        Behavior on anchors.rightMargin {
+        Behavior on anchors.leftMargin {
             NumberAnimation {
                 duration: 150
-                easing: Easing.OutCubic
+                easing.type: Easing.OutCubic
             }
         }
 
@@ -178,16 +266,19 @@ PanelWindow {
             }
         }
     }
+
     Shape {
-        anchors.right: osdBox.right
-        anchors.rightMargin: root.opened ? 6 : -36
-        anchors.top: osdBox.top
-        anchors.topMargin: -30
+        anchors {
+            right: osdBox.right
+            rightMargin: root.opened ? 6 : -36
+            top: osdBox.top
+            topMargin: -30
+        }
 
         Behavior on anchors.rightMargin {
             NumberAnimation {
                 duration: 150
-                easing: Easing.OutCubic
+                easing.type: Easing.OutCubic
             }
         }
 

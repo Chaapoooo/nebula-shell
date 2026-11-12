@@ -71,6 +71,11 @@ PanelWindow {
             }
         }
 
+        BottomButtons {
+            id: bottomButtonsColumn
+            width: parent.width
+        }
+
         Shutdown {
             id: shutdownButton
             anchors {

@@ -127,8 +127,8 @@ PanelWindow {
             }
 
             color: Theme.surface
-            width: wlogoutWindow.opened ? buttonsRow.width + 24 : 50
-            height: wlogoutWindow.opened ? buttonsRow.height + 24 : 0
+            width: wlogoutWindow.opened ? buttonsRow.width + 24 : 0
+            height: wlogoutWindow.opened ? buttonsRow.height + 24 : 50
             topLeftRadius: 15
             bottomLeftRadius: 15
 

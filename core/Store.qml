@@ -63,19 +63,30 @@ QtObject {
     }
 
     function triggerVolumeOsd() {
-        openSideOsd("volume");
+        if (sideOsdOpen && sideOsdMode === "all")
+            return;
+
+        sideOsdMode = "volume";
+        sideOsdOpen = true;
+        sideOsdTimer.restart();
     }
 
     function triggerBrightnessOsd() {
-        openSideOsd("brightness");
+        if (sideOsdOpen && sideOsdMode === "all")
+            return;
+
+        sideOsdMode = "brightness";
+        sideOsdOpen = true;
+        sideOsdTimer.restart();
     }
 
     function closeSideOsd() {
         sideOsdOpen = false;
+        sideOsdTimer.interval = 1500;
     }
 
     property var sideOsdTimer: Timer {
-        interval: 100
+        interval: 1500
         onTriggered: {
             root.requestCloseSideOsd();
         }

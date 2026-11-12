@@ -10,7 +10,7 @@ Item {
     property int activeWorkspace: (Hyprland.focusedWorkspace && Hyprland.focusedWorkspace.id >= 1 && Hyprland.focusedWorkspace.id <= 10) ? Hyprland.focusedWorkspace.id : internalActiveWs
     property int internalActiveWs: 1
 
-    readonly property var workspaceIcons: ["󰈹", "󰨞", "", "󰙯", "·", "·", "·", "·", "·", "󰓇"]
+    readonly property var workspaceIcons: ["󰈹", "󰨞", "", "󰙯", "󰊗", "·", "·", "·", "·", "󰓇"]
 
     function isOccupied(wsId) {
         var dummy = Hyprland.workspaces;
